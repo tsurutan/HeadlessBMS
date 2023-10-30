@@ -27,6 +27,8 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
+    // TIPS: runtimeOnlyとは
+    // コンパイルには必要ないが実行に必要な場合
     runtimeOnly("com.h2database:h2")
 }
 

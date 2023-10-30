@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 
 // TODO: WebMvcTestとMockMvcTestの違い
-// TODO: runtimeonlyとは
 @SpringBootTest
 @AutoConfigureMockMvc
 class ArticleControllerTest {
