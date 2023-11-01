@@ -1,4 +1,4 @@
-package com.example.blogapi.controllers
+package com.example.blogapi.controllers.api
 
 import com.example.blogapi.entities.ArticleEntity
 import com.example.blogapi.repositories.ArticleRepository
@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
@@ -33,17 +34,20 @@ class ArticleControllerTest {
     inner class MockMVCGetArticles {
         @Test
         fun OKを返す() {
-            mockMvc.perform(get("/api/articles"))
-                .andExpect(status().isOk)
+            request().andExpect(status().isOk)
         }
 
         @Test
         fun 記事の一覧を返す() {
-            articleRepository.save(ArticleEntity(slug = "sample", title="記事です"))
+            articleRepository.save(ArticleEntity(slug = "sample", title = "記事です"))
 
-            mockMvc.perform(get("/api/articles"))
+            request()
                 .andExpect(jsonPath("$.length()").value(1))
                 .andExpect(jsonPath("$[0].title").value("記事です"))
+        }
+
+        private fun request(): ResultActions {
+            return mockMvc.perform(get("/api/articles"))
         }
     }
 }
@@ -51,10 +55,9 @@ class ArticleControllerTest {
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
 class ArticleControllerWebTestClientTest {
-    @LocalServerPort
-    var port: Int = 0
     @Autowired
     lateinit var articleRepository: ArticleRepository
+
     @Autowired
     lateinit var webTestClient: WebTestClient
 
@@ -63,18 +66,19 @@ class ArticleControllerWebTestClientTest {
     inner class MockMVCGetArticles {
         @Test
         fun OKを返す() {
-            webTestClient
-                    .get().uri("/api/articles").exchange()
-                    .expectStatus().isOk
+            request().expectStatus().isOk
         }
 
         @Test
         fun 記事の一覧を返す() {
-            articleRepository.save(ArticleEntity(slug = "sample", title="記事です"))
+            articleRepository.save(ArticleEntity(slug = "sample", title = "記事です"))
 
-            webTestClient
-                    .get().uri("/api/articles").exchange()
-                    .expectBody().jsonPath("$[0].title", "記事です")
+            request().expectBody().jsonPath("$[0].title", "記事です")
+        }
+
+        private fun request(): WebTestClient.ResponseSpec {
+            return webTestClient
+                .get().uri("/api/articles").exchange()
         }
     }
 }
