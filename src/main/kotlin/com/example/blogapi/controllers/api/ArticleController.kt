@@ -1,4 +1,4 @@
-package com.example.blogapi.controllers
+package com.example.blogapi.controllers.api
 
 import com.example.blogapi.services.Article
 import com.example.blogapi.services.ArticleService
@@ -19,6 +19,6 @@ data class ArticleResponse(val title: String) {
 class ArticleController(val articleService: ArticleService) {
     @GetMapping
     fun getArticles(): List<ArticleResponse> {
-        return articleService.getArticles().map(ArticleResponse::create)
+        return articleService.getArticles().map(ArticleResponse.Companion::create)
     }
 }

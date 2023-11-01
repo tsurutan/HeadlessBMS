@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    driver-class-name: "org.h2.Driver"
+    username: "sa"
+  h2:
+    console:
+      enabled: true
+  devtools:
+    remote:
+      restart:
+        enabled: true
+    livereload:
+      enabled: true
+
+  # TymeleafでもHotReloadを行いため記入した
+  # https://stackoverflow.com/questions/58275418/live-reload-for-thymeleaf-template
+  thymeleaf: # Thymeleaf
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+  web:
+    resources:
+      static-locations: file:src/main/resources/static/
+      cache:
+        period: 0
