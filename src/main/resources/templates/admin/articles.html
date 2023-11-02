@@ -29,12 +29,7 @@
 </nav>
 <div class="container py-4">
     <div class="list-group">
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
-        <a class="list-group-item list-group-item-action">AN ITEM</a>
+        <a class="list-group-item list-group-item-action" th:each="article : ${articles}" th:text="${article.title}"></a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
