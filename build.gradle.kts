@@ -31,6 +31,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webflux")
+    testImplementation("com.microsoft.playwright:playwright:1.28.1")
 
     // TIPS: runtimeOnlyとは
     // コンパイルには必要ないが実行に必要な場合

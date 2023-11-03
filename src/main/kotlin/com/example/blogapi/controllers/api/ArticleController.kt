@@ -27,7 +27,7 @@ class ArticleController(val articleService: ArticleService) {
 
     @PostMapping
     fun createArticle(): ResponseEntity<Unit> {
-        articleService.save()
+        articleService.save("")
         val uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(1).toUri()
         return ResponseEntity.created(uri).build()
     }

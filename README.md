@@ -19,3 +19,8 @@ make run
 ## Pages
 
 - /admin/articles  Show all articles
+
+## Miscellaneous
+
+### Thymeleaf
+- th:href https://www.thymeleaf.org/doc/articles/standardurlsyntax.html 

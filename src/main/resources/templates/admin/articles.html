@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
 <section class="container py-4" layout:fragment="content">
     <div class="list-group">
-        <a class="list-group-item list-group-item-action" th:each="article : ${articles}" th:text="${article.title}"></a>
+        <a
+                class="list-group-item list-group-item-action"
+                th:each="article : ${articles}"
+                th:text="${article.title}"
+                th:href="@{/admin/articles/{id}(id=${article.slug})}" />
     </div>
 </section>
 </html>
