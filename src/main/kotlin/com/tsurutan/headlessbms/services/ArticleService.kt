@@ -18,7 +18,7 @@ class ArticleService(val articleRepository: ArticleRepository) {
         return articleRepository.findAll().map(Article.Companion::create)
     }
 
-    fun save(slug: String) {
-        articleRepository.save(ArticleEntity(slug = slug, title = "Sample Article"))
+    fun save(slug: String, title: String) {
+        articleRepository.save(ArticleEntity(slug = slug, title = title))
     }
 }

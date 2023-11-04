@@ -26,11 +26,14 @@ class CreateArticleScenario {
     @Test
     fun shouldCreateArticle() {
         page.navigate("/admin/articles/new")
+        page.getByLabel("Slug").isVisible
         page.getByPlaceholder("Please input slug").fill("hello")
+        page.getByLabel("Title").isVisible
+        page.getByPlaceholder("Please input title").fill("This is the title of article")
         page.getByText("Save").click()
 
         assertThat(
-            page.getByText("Sample Article")
+            page.getByText("This is the title of article")
                 .getAttribute("href")
         ).isEqualTo("/admin/articles/hello")
     }
