@@ -1,52 +1,46 @@
 package com.tsurutan.headlessbms.controllers.e2e
 
-import com.microsoft.playwright.Browser
 import com.microsoft.playwright.Page
-import com.microsoft.playwright.Playwright
-import com.microsoft.playwright.options.AriaRole
+import com.tsurutan.headlessbms.controllers.e2e.pages.ArticlesPage
+import com.tsurutan.headlessbms.controllers.e2e.pages.EditArticlePage
+import com.tsurutan.headlessbms.controllers.e2e.pages.NewArticlePage
+import com.tsurutan.headlessbms.services.Article
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.web.server.LocalServerPort
+import org.springframework.test.context.ContextConfiguration
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration(classes = [E2EConfiguration::class]) // TODO: What is @ContextConfiguration
 class CreateArticleScenario {
-    @LocalServerPort
-    var port: Int = 0
+    @Autowired
     lateinit var page: Page
+    @Autowired
+    lateinit var newArticlePage: NewArticlePage
+    @Autowired
+    lateinit var articlesPage: ArticlesPage
+    @Autowired
+    lateinit var editArticlePage: EditArticlePage
+    @Autowired
     lateinit var baseUrl: String
 
-    @BeforeEach
-    fun setup() {
-        val playwright = Playwright.create()
-        val browser = playwright.chromium().launch()
-        baseUrl = "http://localhost:$port"
-        page = browser.newPage(Browser.NewPageOptions().setBaseURL(baseUrl))
-    }
 
     @Test
     fun shouldCreateArticle() {
-        page.navigate("/admin/articles/new")
-        page.getByLabel("Slug").isVisible
-        page.getByPlaceholder("Please input slug").fill("hello")
-        page.getByLabel("Title").isVisible
-        page.getByPlaceholder("Please input title").fill("This is the title of article")
-        page.getByText("Save").click()
+        val newArticle = Article(slug="hello", title="This is the title of article")
+        newArticlePage.goTo()
 
-        page.getByText("This is the title of article").click()
+        newArticlePage.expectFormToBeInTheDocument()
+        newArticlePage.fillForms(newArticle)
+        newArticlePage.save()
+
+        articlesPage.clickLink(newArticle)
 
         assertThat(page.url()).isEqualTo("$baseUrl/admin/articles/hello")
 
-        page.getByText("hello").isVisible
-        page.getByText("This is the title of article").isVisible
-        assertThat(page.title()).isEqualTo("This is the title of article")
-
-        page.getByLabel("Slug").isVisible
-        assertThat(page.getByPlaceholder("Please input slug").inputValue()).isEqualTo("hello")
-        page.getByLabel("Title").isVisible
-        assertThat(page.getByPlaceholder("Please input title").inputValue()).isEqualTo("This is the title of article")
-        page.getByRole(AriaRole.BUTTON, Page.GetByRoleOptions().setName("Update")).isVisible
+        editArticlePage.expectTitleToBe("This is the title of article")
+        editArticlePage.expectFormWithValuesToBeInTheDocument(newArticle)
     }
 }
