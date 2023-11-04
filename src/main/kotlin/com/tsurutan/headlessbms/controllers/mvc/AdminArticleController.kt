@@ -5,6 +5,7 @@ import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 
@@ -13,6 +14,13 @@ data class NewArticle(val slug: String = "", val title: String = "")
 @Controller
 @RequestMapping("/admin/articles")
 class AdminArticleController(val articleService: ArticleService) {
+    @GetMapping("/{slug}")
+    fun editArticlePage(@PathVariable slug: String, model: Model): String {
+        val article = articleService.getArticle(slug)
+        model.addAttribute("article", article)
+        return "admin/articles/edit"
+    }
+
     @GetMapping("/new")
     fun createArticlePage(model: Model): String {
         return "admin/articles/new"

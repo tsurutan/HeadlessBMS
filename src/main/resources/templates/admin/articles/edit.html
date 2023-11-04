@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <title th:text="${article.title}"></title>
+</head>
+<section layout:fragment="content">
+    <form action="/admin/articles" method="patch">
+        <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+            <input name="slug"
+                   type="text" class="form-control" id="slug"
+                   th:value="${article.slug}"
+                   placeholder="Please input slug">
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="title"
+                   type="text"
+                   class="form-control"
+                   id="title"
+                   placeholder="Please input title"
+                   th:value="${article.title}"
+            >
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</section>
+</html>

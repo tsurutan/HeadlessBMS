@@ -14,6 +14,9 @@ data class Article(val title: String, val slug: String) {
 
 @Service
 class ArticleService(val articleRepository: ArticleRepository) {
+    fun getArticle(slug: String): Article {
+        return Article.create(articleRepository.findById(slug).orElseThrow())
+    }
     fun getArticles(): List<Article> {
         return articleRepository.findAll().map(Article.Companion::create)
     }
