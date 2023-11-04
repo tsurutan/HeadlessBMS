@@ -1,7 +1,7 @@
-package com.example.blogapi.services
+package com.tsurutan.headlessbms.services
 
-import com.example.blogapi.entities.ArticleEntity
-import com.example.blogapi.repositories.ArticleRepository
+import com.tsurutan.headlessbms.entities.ArticleEntity
+import com.tsurutan.headlessbms.repositories.ArticleRepository
 import org.springframework.stereotype.Service
 
 data class Article(val title: String, val slug: String) {
@@ -15,7 +15,7 @@ data class Article(val title: String, val slug: String) {
 @Service
 class ArticleService(val articleRepository: ArticleRepository) {
     fun getArticles(): List<Article> {
-        return articleRepository.findAll().map(Article::create)
+        return articleRepository.findAll().map(Article.Companion::create)
     }
 
     fun save(slug: String) {

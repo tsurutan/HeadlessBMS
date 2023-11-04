@@ -1,6 +1,6 @@
-package com.example.blogapi.controllers.mvc
+package com.tsurutan.headlessbms.controllers.mvc
 
-import com.example.blogapi.services.ArticleService
+import com.tsurutan.headlessbms.services.ArticleService
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model

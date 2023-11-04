@@ -1,4 +1,4 @@
-package com.example.blogapi.configurations
+package com.tsurutan.headlessbms.configurations
 
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect
 import org.springframework.context.annotation.Bean

@@ -1,4 +1,4 @@
-package com.example.blogapi.entities
+package com.tsurutan.headlessbms.entities
 
 import jakarta.persistence.Entity
 import jakarta.persistence.Id

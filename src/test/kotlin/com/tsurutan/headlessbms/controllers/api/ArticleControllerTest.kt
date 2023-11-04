@@ -1,7 +1,7 @@
-package com.example.blogapi.controllers.api
+package com.tsurutan.headlessbms.controllers.api
 
-import com.example.blogapi.entities.ArticleEntity
-import com.example.blogapi.repositories.ArticleRepository
+import com.tsurutan.headlessbms.entities.ArticleEntity
+import com.tsurutan.headlessbms.repositories.ArticleRepository
 import jakarta.persistence.EntityManager
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName

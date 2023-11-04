@@ -1,4 +1,4 @@
-package com.example.blogapi.controllers.e2e
+package com.tsurutan.headlessbms.controllers.e2e
 
 import com.microsoft.playwright.Browser
 import com.microsoft.playwright.Page

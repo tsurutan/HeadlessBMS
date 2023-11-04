@@ -1,7 +1,7 @@
-package com.example.blogapi.controllers.api
+package com.tsurutan.headlessbms.controllers.api
 
-import com.example.blogapi.services.Article
-import com.example.blogapi.services.ArticleService
+import com.tsurutan.headlessbms.services.Article
+import com.tsurutan.headlessbms.services.ArticleService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping

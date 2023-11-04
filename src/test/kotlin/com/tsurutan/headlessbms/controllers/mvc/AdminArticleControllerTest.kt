@@ -1,4 +1,4 @@
-package com.example.blogapi.controllers.mvc
+package com.tsurutan.headlessbms.controllers.mvc
 
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested

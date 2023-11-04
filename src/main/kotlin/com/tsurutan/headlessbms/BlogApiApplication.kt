@@ -1,4 +1,4 @@
-package com.example.blogapi
+package com.tsurutan.headlessbms
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
