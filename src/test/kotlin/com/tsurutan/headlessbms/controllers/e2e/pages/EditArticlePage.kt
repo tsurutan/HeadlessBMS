@@ -11,8 +11,12 @@ class EditArticlePage(page: Page): BasePage(page) {
         articleFormMixin = ArticleFormMixin(page)
     }
 
+    fun expectPageIsInThis(article: Article) {
+        assertThat(page.url()).endsWith("/admin/articles/${article.slug}")
+    }
+
     fun expectFormWithValuesToBeInTheDocument(article: Article) {
         articleFormMixin.expectFormWithValuesToBeInTheDocument(article)
-        page.getByRole(AriaRole.BUTTON, Page.GetByRoleOptions().setName("Update")).isVisible
+        assertThat(page.getByRole(AriaRole.BUTTON, Page.GetByRoleOptions().setName("Update")).isVisible).isTrue()
     }
 }

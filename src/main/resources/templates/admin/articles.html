@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
+<head>
+    <title>Articles</title>
+</head>
 <section class="container py-4" layout:fragment="content">
-    <div class="list-group">
-        <a
-                class="list-group-item list-group-item-action"
-                th:each="article : ${articles}"
-                th:text="${article.title}"
-                th:href="@{/admin/articles/{id}(id=${article.slug})}" />
+    <div class="row gy-5">
+        <div class="col-6">
+            <div
+                    class="card"
+                    th:each="article : ${articles}"
+            >
+                <div class="card-body">
+                    <p class="card-title" th:text="${article.title}"></p>
+                    <p class="card-text" th:text="${article.description}"></p>
+                    <a class="btn btn-primary" th:href="@{/admin/articles/{id}(id=${article.slug})}">Edit</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 </html>

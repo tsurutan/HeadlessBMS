@@ -5,6 +5,6 @@ import org.assertj.core.api.Assertions
 
 open class BasePage(protected val page: Page) {
     fun expectTitleToBe(title: String) {
-        Assertions.assertThat(page.title()).isEqualTo("This is the title of article")
+        Assertions.assertThat(page.title()).isEqualTo(title)
     }
 }
