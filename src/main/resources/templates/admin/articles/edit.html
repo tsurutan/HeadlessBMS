@@ -23,6 +23,15 @@
                    th:value="${article.title}"
             >
         </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description"
+                   class="form-control"
+                   id="description"
+                   placeholder="Please input description"
+                   th:text="${article.description}"
+            ></textarea>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </section>

@@ -38,7 +38,7 @@ class ArticleControllerWebTestClientTest {
 
         @Test
         fun shouldReturnArticles() {
-            articleRepository.save(ArticleEntity(slug = "sample", title = "記事です"))
+            articleRepository.save(ArticleEntity(slug = "sample", title = "記事です", description = ""))
 
             request().expectBody().jsonPath("$[0].title", "記事です")
         }

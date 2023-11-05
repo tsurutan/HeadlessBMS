@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 
-data class NewArticle(val slug: String = "", val title: String = "")
+data class NewArticle(val slug: String = "", val title: String = "", val description: String = "")
 
 @Controller
 @RequestMapping("/admin/articles")
@@ -29,7 +29,7 @@ class AdminArticleController(val articleService: ArticleService) {
     @PostMapping(consumes = [MediaType.APPLICATION_FORM_URLENCODED_VALUE])
     // ASK: Why does this work? new.html doesn't specify newArticle, though.
     fun createArticle(newArticle: NewArticle): String {
-        articleService.save(slug=newArticle.slug, title=newArticle.title)
+        articleService.save(slug=newArticle.slug, title=newArticle.title, description = newArticle.description)
         return "redirect:/admin/articles"
     }
 

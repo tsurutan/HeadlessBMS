@@ -29,7 +29,7 @@ class CreateArticleScenario {
 
     @Test
     fun shouldCreateArticle() {
-        val newArticle = Article(slug="hello", title="This is the title of article")
+        val newArticle = Article(title="This is the title of article", slug="hello", description = "description Sample")
         newArticlePage.goTo()
 
         newArticlePage.expectFormToBeInTheDocument()

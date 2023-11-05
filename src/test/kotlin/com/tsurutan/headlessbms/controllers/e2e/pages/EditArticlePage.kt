@@ -13,5 +13,6 @@ class EditArticlePage(page: Page): BasePage(page) {
 
     fun expectFormWithValuesToBeInTheDocument(article: Article) {
         articleFormMixin.expectFormWithValuesToBeInTheDocument(article)
+        page.getByRole(AriaRole.BUTTON, Page.GetByRoleOptions().setName("Update")).isVisible
     }
 }
