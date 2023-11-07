@@ -1,8 +1,11 @@
 spring:
   datasource:
-    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
-    driver-class-name: "org.h2.Driver"
-    username: "sa"
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:15432}/${POSTGRES_DB:headless_bms_development}
+    username: ${POSTGRES_USER:admin}
+    password: ${POSTGRES_PASSWORD:password}
+  jpa:
+    hibernate:
+      ddl-auto: update
   h2:
     console:
       enabled: true

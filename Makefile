@@ -1,4 +1,11 @@
+.PHONY: run
 run:
-	./gradlew bootRun
+	make -j 2 run-db run-app
 
-# TODO: Why can't I write PHONY??
+.PHONY: run-db
+run-db:
+	docker-compose up db
+
+.PHONY: run-app
+run-app:
+	./gradlew bootRun

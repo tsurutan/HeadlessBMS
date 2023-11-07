@@ -38,6 +38,7 @@ dependencies {
     // TIPS: runtimeOnlyとは
     // コンパイルには必要ないが実行に必要な場合
     runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql:42.6.0")
 }
 
 tasks.withType<KotlinCompile> {

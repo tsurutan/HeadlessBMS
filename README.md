@@ -6,10 +6,22 @@ However, please be aware that this open-source is not fully operational at the m
 
 ## Commands
 
-### Run server
+### Run application and db
 
 ```bash
 make run
+```
+
+### Run application only
+
+```bash
+make run-app
+```
+
+### Run db only
+
+```bash
+make run-db
 ```
 
 ## Endpoint

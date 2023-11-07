@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15.4-alpine3.18
+    container_name: headless-bms-db
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "headless_bms_development"
