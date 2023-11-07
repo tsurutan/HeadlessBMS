@@ -4,10 +4,15 @@ import com.tsurutan.headlessbms.entities.ArticleEntity
 import com.tsurutan.headlessbms.repositories.ArticleRepository
 import org.springframework.stereotype.Service
 
-data class Article(val title: String, val slug: String, val description: String) {
+data class Article(val title: String, val slug: String, val description: String, val content: String) {
     companion object {
         fun create(articleEntity: ArticleEntity): Article {
-            return Article(title = articleEntity.title, slug = articleEntity.slug, description = articleEntity.description)
+            return Article(
+                title = articleEntity.title,
+                slug = articleEntity.slug,
+                description = articleEntity.description,
+                content = articleEntity.content
+            )
         }
     }
 }
@@ -21,7 +26,7 @@ class ArticleService(val articleRepository: ArticleRepository) {
         return articleRepository.findAll().map(Article.Companion::create)
     }
 
-    fun save(slug: String, title: String, description: String) {
-        articleRepository.save(ArticleEntity(slug = slug, title = title, description = description))
+    fun save(slug: String, title: String, description: String, content: String) {
+        articleRepository.save(ArticleEntity(slug = slug, title = title, description = description, content = content))
     }
 }

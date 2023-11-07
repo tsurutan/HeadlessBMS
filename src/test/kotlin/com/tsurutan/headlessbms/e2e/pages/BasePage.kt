@@ -1,4 +1,4 @@
-package com.tsurutan.headlessbms.controllers.e2e.pages
+package com.tsurutan.headlessbms.e2e.pages
 
 import com.microsoft.playwright.Page
 import org.assertj.core.api.Assertions

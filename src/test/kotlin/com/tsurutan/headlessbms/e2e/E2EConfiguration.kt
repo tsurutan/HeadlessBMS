@@ -1,11 +1,11 @@
-package com.tsurutan.headlessbms.controllers.e2e
+package com.tsurutan.headlessbms.e2e
 
 import com.microsoft.playwright.Browser
 import com.microsoft.playwright.Page
 import com.microsoft.playwright.Playwright
-import com.tsurutan.headlessbms.controllers.e2e.pages.ArticlesPage
-import com.tsurutan.headlessbms.controllers.e2e.pages.EditArticlePage
-import com.tsurutan.headlessbms.controllers.e2e.pages.NewArticlePage
+import com.tsurutan.headlessbms.e2e.pages.ArticlesPage
+import com.tsurutan.headlessbms.e2e.pages.EditArticlePage
+import com.tsurutan.headlessbms.e2e.pages.NewArticlePage
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.context.annotation.Bean

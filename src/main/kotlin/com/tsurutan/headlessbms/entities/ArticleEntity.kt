@@ -7,5 +7,6 @@ import jakarta.persistence.Id
 data class ArticleEntity(
     @Id val slug: String,
     val title: String,
-    val description: String
+    val description: String,
+    val content: String
 )

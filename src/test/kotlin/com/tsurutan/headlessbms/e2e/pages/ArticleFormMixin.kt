@@ -1,4 +1,4 @@
-package com.tsurutan.headlessbms.controllers.e2e.pages
+package com.tsurutan.headlessbms.e2e.pages
 
 import com.microsoft.playwright.Locator
 import com.microsoft.playwright.Page
@@ -14,10 +14,14 @@ class ArticleFormMixin(private val page: Page) {
     private val descriptionTextArea: Locator
         get() = page.getByPlaceholder("Please input description")
 
+    private val contentTextArea: Locator
+        get() = page.getByPlaceholder("Please input content")
+
     fun expectFormWithValuesToBeInTheDocument(article: Article) {
         Assertions.assertThat(slugInput.inputValue()).isEqualTo(article.slug)
         Assertions.assertThat(titleInput.inputValue()).isEqualTo(article.title)
         Assertions.assertThat(descriptionTextArea.inputValue()).isEqualTo(article.description)
+        Assertions.assertThat(contentTextArea.inputValue()).isEqualTo(article.content)
     }
 
     fun expectFormToBeInTheDocument() {
@@ -27,11 +31,14 @@ class ArticleFormMixin(private val page: Page) {
         titleInput.isVisible
         page.getByLabel("Description").isVisible
         descriptionTextArea.isVisible
+        page.getByLabel("Content").isVisible
+        contentTextArea.isVisible
     }
 
     fun fillForms(article: Article) {
         slugInput.fill(article.slug)
         titleInput.fill(article.title)
         descriptionTextArea.fill(article.description)
+        contentTextArea.fill(article.content)
     }
 }

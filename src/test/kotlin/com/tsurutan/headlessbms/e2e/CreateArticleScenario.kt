@@ -1,8 +1,8 @@
-package com.tsurutan.headlessbms.controllers.e2e
+package com.tsurutan.headlessbms.e2e
 
-import com.tsurutan.headlessbms.controllers.e2e.pages.ArticlesPage
-import com.tsurutan.headlessbms.controllers.e2e.pages.EditArticlePage
-import com.tsurutan.headlessbms.controllers.e2e.pages.NewArticlePage
+import com.tsurutan.headlessbms.e2e.pages.ArticlesPage
+import com.tsurutan.headlessbms.e2e.pages.EditArticlePage
+import com.tsurutan.headlessbms.e2e.pages.NewArticlePage
 import com.tsurutan.headlessbms.services.Article
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +23,12 @@ class CreateArticleScenario {
 
     @Test
     fun shouldCreateArticle() {
-        val newArticle = Article(title="This is the title of article", slug="hello", description = "description Sample")
+        val newArticle = Article(
+            title="This is the title of article",
+            slug="hello",
+            description = "description Sample",
+            content = "This is the content"
+        )
         newArticlePage.goTo()
 
         newArticlePage.expectFormToBeInTheDocument()
