@@ -2,10 +2,13 @@ package com.tsurutan.headlessbms.e2e.pages
 
 import com.microsoft.playwright.Locator
 import com.microsoft.playwright.Page
-import com.microsoft.playwright.options.AriaRole
 import com.tsurutan.headlessbms.services.Article
 import org.assertj.core.api.Assertions
+import org.springframework.context.annotation.Lazy
+import org.springframework.stereotype.Component
 
+@Lazy
+@Component
 class ArticleFormMixin(private val page: Page) {
     private val slugInput: Locator
         get() = page.getByPlaceholder("Please input slug")

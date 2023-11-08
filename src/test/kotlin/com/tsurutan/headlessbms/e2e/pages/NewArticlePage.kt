@@ -2,13 +2,12 @@ package com.tsurutan.headlessbms.e2e.pages
 
 import com.microsoft.playwright.Page
 import com.tsurutan.headlessbms.services.Article
+import org.springframework.context.annotation.Lazy
+import org.springframework.stereotype.Component
 
-class NewArticlePage(page: Page): BasePage(page) {
-    private val articleFormMixin: ArticleFormMixin
-
-    init {
-        articleFormMixin = ArticleFormMixin(page)
-    }
+@Lazy
+@Component
+class NewArticlePage(page: Page, val articleFormMixin: ArticleFormMixin): BasePage(page) {
     fun goTo() {
         page.navigate("/admin/articles/new")
     }

@@ -9,6 +9,7 @@ import com.tsurutan.headlessbms.e2e.pages.NewArticlePage
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Lazy
 
 // TODO: Figure out the difference between @Configuration and @TestConfiguration
@@ -26,20 +27,5 @@ class E2EConfiguration {
         val playwright = Playwright.create()
         val browser = playwright.chromium().launch()
         return browser.newPage(Browser.NewPageOptions().setBaseURL(baseUrl))
-    }
-
-    @Bean
-    fun newArticlePage(page: Page): NewArticlePage {
-        return NewArticlePage(page)
-    }
-
-    @Bean
-    fun articlesPage(page: Page): ArticlesPage {
-        return ArticlesPage(page)
-    }
-
-    @Bean
-    fun editArticlePage(page: Page): EditArticlePage {
-        return EditArticlePage(page)
     }
 }
