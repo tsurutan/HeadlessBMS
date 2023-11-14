@@ -5,11 +5,10 @@
     <title>Articles</title>
 </head>
 <section class="container py-4" layout:fragment="content">
-    <div class="row gy-5">
-        <div class="col-6">
+    <div class="row gap-2">
+        <div class="col-3" th:each="article : ${articles}">
             <div
                     class="card"
-                    th:each="article : ${articles}"
             >
                 <div class="card-body">
                     <p class="card-title" th:text="${article.title}"></p>
