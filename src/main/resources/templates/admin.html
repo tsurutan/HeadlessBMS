@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+	<title>Articles</title>
+</head>
+<section class="container-fluid flex-fill d-flex align-items-center justify-content-center flex-column" layout:fragment="content">
+	<h1 class="display-3 fw-bold font-monospace text-center">Welcome to <span class="text-warning">HeadlessBMS!</span></h1>
+	<div class="d-flex column-gap-3 pt-4">
+		<a class="btn btn-light fw-bold" href="/admin/articles/new">New Article</a>
+		<a class="btn btn-light fw-bold" href="/admin/articles">Articles</a>
+		<a class="btn btn-light fw-bold" href="/admin/articles">Categories</a>
+		<a class="btn btn-light fw-bold" href="/admin/articles">Tags</a>
+	</div>
+</section>
+</html>
