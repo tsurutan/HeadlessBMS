@@ -1,5 +1,6 @@
 package com.tsurutan.headlessbms.e2e
 
+import com.tsurutan.headlessbms.e2e.annotations.E2E
 import com.tsurutan.headlessbms.e2e.pages.ArticlesPage
 import com.tsurutan.headlessbms.e2e.pages.EditArticlePage
 import com.tsurutan.headlessbms.e2e.pages.NewArticlePage
@@ -10,8 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration
 
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = [E2EConfiguration::class]) // TODO: What is @ContextConfiguration
+@E2E
 class CreateArticleScenario {
     @Autowired
     lateinit var newArticlePage: NewArticlePage

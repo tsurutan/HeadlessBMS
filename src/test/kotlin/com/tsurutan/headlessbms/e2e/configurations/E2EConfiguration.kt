@@ -1,4 +1,4 @@
-package com.tsurutan.headlessbms.e2e
+package com.tsurutan.headlessbms.e2e.configurations
 
 import com.microsoft.playwright.Browser
 import com.microsoft.playwright.Page
