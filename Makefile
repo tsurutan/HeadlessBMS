@@ -9,3 +9,7 @@ run-db:
 .PHONY: run-app
 run-app:
 	./gradlew bootRun
+
+.PHONY: npm-install
+npm-install:
+	./gradlew npm_install

@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
+<head>
+	<title>New Article</title>
+</head>
 <section layout:fragment="content">
-    <form action="/admin/articles" method="post">
-        <div class="mb-3">
-            <label for="slug" class="form-label">Slug</label>
-            <input name="slug" type="text" class="form-control" id="slug"
-                   placeholder="Please input slug">
-        </div>
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input name="title" type="text" class="form-control" id="title" placeholder="Please input title">
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea name="description" class="form-control" id="description" placeholder="Please input description"></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="content" class="form-label">Content</label>
-            <textarea name="content" class="form-control" id="content" placeholder="Please input content"></textarea>
-        </div>
-        <button type="submit" class="btn btn-light">Save</button>
-    </form>
+	<form action="/admin/articles" method="post" class="bg-body p-4 rounded border">
+		<div class="mb-3">
+			<label for="slug" class="form-label text-secondary">Slug</label>
+			<input name="slug" type="text" class="form-control" id="slug"
+			       placeholder="Please input slug">
+		</div>
+		<div class="mb-3">
+			<label for="title" class="form-label text-secondary">Title</label>
+			<input name="title" type="text" class="form-control" id="title" placeholder="Please input title">
+		</div>
+		<div class="mb-3">
+			<label for="description" class="form-label text-secondary">Description</label>
+			<textarea name="description" class="form-control" id="description"
+			          placeholder="Please input description"></textarea>
+		</div>
+		<div class="mb-3">
+			<label for="content" class="form-label text-secondary">Content</label>
+			<div class="row gap-2">
+	        <textarea
+			        id="content"
+			        oninput="this.editor.update()"
+			        name="content"
+			        class="col form-control"
+			        placeholder="Please input content"
+	        ></textarea>
+				<div class="col text-black border" id="preview"></div>
+			</div>
+		</div>
+		<script src="/js/markdown.js"></script>
+		<script src="/js/markdown-load.js"></script>
+		<button type="submit" class="btn btn-primary">Save</button>
+	</form>
 </section>
 </html>
