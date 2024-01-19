@@ -1,12 +1,14 @@
 package com.tsurutan.headlessbms.controllers.api
 
 import com.tsurutan.headlessbms.entities.ArticleEntity
+import com.tsurutan.headlessbms.exntensions.DBCleanExtension
 import com.tsurutan.headlessbms.repositories.ArticleRepository
 import jakarta.persistence.EntityManager
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
@@ -15,6 +17,7 @@ import org.springframework.test.web.reactive.server.WebTestClient
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(DBCleanExtension::class)
 @AutoConfigureWebTestClient
 class ArticleControllerWebTestClientTest {
     @LocalServerPort
@@ -51,15 +54,15 @@ class ArticleControllerWebTestClientTest {
 
     @Nested
     @DisplayName("POST: /api/articles")
-    inner class PostArticles {
+    open inner class PostArticles {
 
         @Test
-        fun shouldReturnIsCreated() {
+        open fun shouldReturnIsCreated() {
             request().expectStatus().isCreated
         }
 
         @Test
-        fun shouldReturnLocation() {
+        open fun shouldReturnLocation() {
             request().expectHeader().location("http://localhost:${port}/api/articles/1")
         }
 
