@@ -25,7 +25,7 @@ class SecurityConfiguration {
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http
             .authorizeHttpRequests {
-                it.anyRequest().authenticated()
+                it.anyRequest().permitAll()
             }
             .formLogin {
                 it.loginPage("/login")

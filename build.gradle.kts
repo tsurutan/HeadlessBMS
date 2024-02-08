@@ -30,8 +30,8 @@ dependencies {
     implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-
+    implementation("org.springframework.boot:spring-boot-starter-actuator:$springVersion")
+    runtimeOnly("io.micrometer:micrometer-registry-prometheus")
     developmentOnly("org.springframework.boot:spring-boot-devtools:$springVersion")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springVersion")
